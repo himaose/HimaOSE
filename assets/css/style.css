@@ -45,6 +45,7 @@ body {
   inset: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
   pointer-events: none;
+  min-height: 100vh;
 }
 
 /* header */
