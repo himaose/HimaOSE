@@ -1,0 +1,1009 @@
+/* =========================
+   COLOR SYSTEM
+========================= */
+:root {
+  --gold-soft: #f3d64e;
+  --gold-main: #fcb50f;
+  --blue-dark: #5182cd;
+  --blue-sky: #54c4fc;
+  --blue-soft: #88d8ff;
+  --text-dark: #222;
+}
+
+/* =========================
+   RESET & GLOBAL
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f0f8ff;
+  color: var(--text-dark);
+  line-height: 1.8;
+}
+
+section {
+  padding: 100px 20px;
+}
+
+/* =========================
+   HERO STYLE
+========================= */
+.profile-hero {
+  height: 50vh;
+  background-color: #000000;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../images/abstract-coloured-background-with-variety-transparent-raindrops.jpg.jpeg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 0 20px;
+  opacity: 0.9;
+}
+
+.profile-hero h1 {
+  font-size: 4rem;
+  font-weight: 600;
+  margin-bottom: -5px;
+}
+
+.profile-hero h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 15px;
+  color: var(--gold-main);
+}
+
+.profile-hero p {
+  font-style: italic;
+  opacity: 0.95;
+  color: var(--gold-soft);
+}
+
+/* =========================
+   INTERACTIVE BORDER CARD
+========================= */
+
+.section-about-himaose {
+  max-width: 900px;
+  margin: 100px auto;
+  padding: 60px 50px;
+  background: #f0f8ff;
+  position: relative;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+/* Gradient Border sesuai palette */
+.section-about-himaose::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    var(--blue-dark),
+    var(--blue-sky),
+    var(--gold-main)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Hover effect */
+.section-about-himaose:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(81, 130, 205, 0.2);
+}
+
+/* Hover border lebih terang */
+.section-about-himaose:hover::before {
+  background: linear-gradient(
+    135deg,
+    var(--blue-sky),
+    var(--blue-soft),
+    var(--gold-soft)
+  );
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
+.section-about-himaose h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  text-align: center;
+  color: var(--blue-dark);
+}
+
+/* =========================
+   PARAGRAPH STYLE
+========================= */
+.section-about-himaose p {
+  text-align: justify;
+  margin-bottom: 25px;
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.9;
+}
+
+/* Drop cap elegan */
+.section-about-himaose p:first-of-type::first-letter {
+  font-size: 3rem;
+  font-weight: 700;
+  float: left;
+  line-height: 1;
+  padding-right: 8px;
+  color: var(--blue-dark);
+}
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.scroll-reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   LOGO MEANING SECTION
+========================= */
+.section-logo-meaning {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 10px;
+}
+
+/* =========================
+   NILAI RESONANSI ASA SECTION
+========================= */
+.section-values {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 100px 20px;
+  text-align: center;
+  background: #ffffff;
+}
+
+.section-values h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 50px;
+  color: #5182cd;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.section-values h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 2px;
+  background: #f3d64e;
+  margin-bottom: 15px;
+}
+
+/* =========================
+   BUDAYA RESONANSI ASA (Different Background)
+========================= */
+.section-culture {
+  background: #f0f8ff !important;
+}
+
+/* Card lebih lebar untuk budaya (hanya 3 card) */
+.section-culture .value-card {
+  flex: 0 1 300px;
+  max-width: 320px;
+}
+
+.values-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.value-card {
+  flex: 0 1 250px;
+  border-radius: 15px;
+  padding: 30px 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.value-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #5182cd;
+}
+
+.value-card {
+  background: #ffffff;
+  border-color: #f3d64e;
+}
+
+.value-card:hover {
+  transform: translateY(-8px);
+  background: #f8fafd;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+  border-color: #5182cd;
+}
+
+.value-icon {
+  font-size: 3rem;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+  display: inline-block;
+  color: #5182cd;
+}
+
+.value-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  margin-top: 10px;
+  color: #5182cd;
+}
+
+.value-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* adjust scroll reveal after new section inserted if any */
+
+.section-logo-meaning h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 50px;
+  text-align: center;
+  color: var(--blue-dark);
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.section-logo-meaning h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 2px;
+  background-color: #f3d64e;
+  margin-bottom: 15px;
+}
+
+/* =========================
+   LOGO CARDS GRID
+========================= */
+.logo-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 0 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-card {
+  flex: 0 1 calc(33.333% - 27px);
+  max-width: 280px;
+}
+
+/* =========================
+   INDIVIDUAL CARD
+========================= */
+.logo-card {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(22, 140, 44, 0.15);
+  transition: all 0.3s ease;
+  border: 2px solid #f3d64e;
+}
+
+.logo-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(81, 130, 205, 0.3);
+}
+
+.card-image {
+  width: 100%;
+  height: 70%;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.logo-card:hover .card-image img {
+  transform: scale(1.1);
+}
+
+/* =========================
+   CARD TITLE
+========================= */
+.card-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, #88d8ff, transparent);
+  color: #000000;
+  padding: 25px 15px 15px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+  z-index: 1;
+  height: 30%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.logo-card:hover .card-title {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* =========================
+   CARD OVERLAY (DESKRIPSI)
+========================= */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue-sky));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 35px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  overflow-y: auto;
+}
+
+.logo-card:hover .card-overlay {
+  opacity: 0.95;
+}
+
+.card-overlay p {
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.7;
+  word-wrap: break-word;
+}
+
+/* =========================
+   VISION & MISSION SECTION
+========================= */
+.section-vision-mission {
+  max-width: 100%;
+  margin: 5px auto;
+  padding: 60px 40px;
+  background: #ffffff;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-vision-mission h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: var(--blue-dark);
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.section-vision-mission h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 2px;
+  background-color: #f3d64e;
+}
+
+.vm-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.vm-card {
+  flex: 0 1 200px;
+  background: linear-gradient(135deg, #5182cd, var(--blue-sky));
+  color: #fff;
+  border-radius: 15px;
+  padding: 25px 15px;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.vm-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.2);
+}
+
+.vm-card.selected {
+  background: linear-gradient(135deg, var(--gold-main), var(--gold-soft));
+  color: var(--text-dark);
+}
+
+.vm-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.vm-content {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10 20px;
+  border-radius: 12px;
+  background-color: #deb9b9;
+  background-image: linear-gradient(135deg, var(--blue-soft) 0%);
+  background-blend-mode: overlay;
+  color: #222;
+  font-size: 1rem;
+  line-height: 1.7;
+  transition:
+    opacity 0.4s ease,
+    max-height 0.4s ease,
+    padding 0.4s ease;
+}
+
+/* VISI styling - dengan border dan animasi */
+#visi.vm-content {
+  border: 2px solid #f3d64e;
+  opacity: 0;
+  transform: translateY(-40px);
+  text-align: center;
+}
+
+#visi.vm-content.show {
+  animation: slideDownVisible 0.8s ease-out forwards;
+}
+
+/* MISI styling - tanpa border dan tanpa background */
+#misi.vm-content {
+  background-color: transparent;
+  background-image: none;
+}
+
+.vm-content.show {
+  opacity: 1;
+  max-height: 900px;
+  padding: 30px;
+}
+
+.vm-content ul {
+  list-style: disc inside;
+}
+
+.vm-content ul li {
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+}
+
+.vm-content ul li::marker {
+  color: var(--gold-main);
+}
+
+/* Mission points (ol li) with border and staggered animation */
+.vm-content ol {
+  list-style: none;
+  counter-reset: misi-counter;
+  padding: 0;
+  margin: 0;
+}
+
+.vm-content ol li {
+  counter-increment: misi-counter;
+  border: 2px solid #f3d64e;
+  border-radius: 10px;
+  background-color: #deb9b9;
+  background-image: linear-gradient(135deg, var(--blue-soft) 0%);
+  background-blend-mode: overlay;
+  padding: 20px 20px 20px 70px;
+  margin-bottom: 15px;
+  opacity: 0;
+  position: relative;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+}
+
+.vm-content ol li:hover {
+  box-shadow: 0 10px 25px rgba(81, 130, 205, 0.3);
+}
+
+/* Numbered badge styling */
+.vm-content ol li::before {
+  content: counter(misi-counter);
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue-sky));
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.vm-content ol li:hover::before {
+  background: linear-gradient(135deg, var(--gold-main), var(--gold-soft));
+}
+
+/* Animation only triggers when parent has .show class */
+.vm-content.show ol li {
+  animation: slideInFromLeft 0.6s ease-out forwards;
+}
+
+/* Staggered animation delays per list item */
+.vm-content.show ol li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.vm-content.show ol li:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.vm-content.show ol li:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.vm-content.show ol li:nth-child(4) {
+  animation-delay: 0.7s;
+}
+
+.vm-content.show ol li:nth-child(5) {
+  animation-delay: 0.9s;
+}
+
+.vm-content.show ol li:nth-child(6) {
+  animation-delay: 1.1s;
+}
+
+.vm-content.show ol li:nth-child(7) {
+  animation-delay: 1.3s;
+}
+
+/* Keyframe for vision slide-down animation */
+@keyframes slideDownVisible {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Keyframe for staggered slide-in animation */
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* keep scroll reveal styles after if needed */
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  /* Hero */
+  .profile-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .profile-hero h2 {
+    font-size: 1.1rem;
+  }
+
+  /* About section */
+  .section-about-himaose {
+    max-width: 100%;
+    padding: 40px 20px;
+    margin: 50px 15px;
+    width: calc(100% - 30px);
+  }
+
+  .section-about-himaose h2 {
+    font-size: 1.5rem;
+  }
+
+  .section-about-himaose p {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  /* Vision & Mission section */
+  .section-vision-mission {
+    padding: 40px 20px;
+  }
+
+  .section-vision-mission h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+
+  .section-vision-mission h2::after {
+    width: 200px;
+  }
+
+  .vm-container {
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .vm-card {
+    flex: 0 1 150px;
+    padding: 18px 12px;
+  }
+
+  .vm-card h3 {
+    font-size: 1rem;
+  }
+
+  .vm-content {
+    max-width: 100%;
+  }
+
+  .vm-content.show {
+    padding: 20px;
+  }
+
+  /* Vision text */
+  #visi.vm-content p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* Mission items - remove animation on mobile */
+  .vm-content ol li {
+    padding: 15px 15px 15px 50px;
+    min-height: auto;
+    opacity: 1;
+    animation: none !important;
+  }
+
+  .vm-content ol li::before {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+    left: 10px;
+  }
+
+  .vm-content ol li:hover {
+    box-shadow: 0 5px 15px rgba(81, 130, 205, 0.2);
+  }
+
+  /* Logo section - VERTICAL LAYOUT */
+  .logo-cards-container {
+    flex-direction: column;
+    gap: 15px;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .logo-card {
+    flex: 0 1 100%;
+    max-width: 320px;
+  }
+
+  .section-logo-meaning h2 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+
+  .card-overlay p {
+    font-size: 0.8rem;
+    padding: 15px;
+  }
+
+  .card-title {
+    font-size: 0.9rem;
+    padding: 15px 10px 10px;
+  }
+
+  /* Values section responsive */
+  .section-values {
+    padding: 60px 20px;
+  }
+
+  .section-values h2 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+
+  .values-container {
+    gap: 20px;
+  }
+
+  .value-card {
+    flex: 0 1 calc(50% - 10px);
+    padding: 20px 15px;
+  }
+
+  .value-icon {
+    font-size: 2.5rem;
+  }
+
+  .value-card h3 {
+    font-size: 1rem;
+  }
+
+  .value-card p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 60px 15px;
+  }
+
+  /* Hero */
+  .profile-hero {
+    height: 40vh;
+  }
+
+  .profile-hero h1 {
+    font-size: 2rem;
+    margin-bottom: -3px;
+  }
+
+  .profile-hero h2 {
+    font-size: 0.9rem;
+  }
+
+  /* About section */
+  .section-about-himaose {
+    max-width: 100%;
+    padding: 30px 15px;
+    margin: 40px 15px;
+    width: calc(100% - 30px);
+    border-radius: 15px;
+  }
+
+  .section-about-himaose h2 {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+  }
+
+  .section-about-himaose p {
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  /* Vision & Mission */
+  .section-vision-mission {
+    padding: 30px 15px;
+  }
+
+  .section-vision-mission h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+  }
+
+  .section-vision-mission h2::after {
+    width: 150px;
+    margin-bottom: 10px;
+  }
+
+  .vm-container {
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .vm-card {
+    flex: 0 1 calc(50% - 5px);
+    padding: 15px 10px;
+    font-size: 0.9rem;
+  }
+
+  .vm-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .vm-content {
+    max-width: 100%;
+  }
+
+  #visi.vm-content {
+    transform: none;
+    opacity: 1;
+    animation: none;
+  }
+
+  #visi.vm-content p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .vm-content.show {
+    padding: 15px;
+    max-height: 1000px;
+  }
+
+  /* Mission items */
+  .vm-content ol li {
+    padding: 12px 12px 12px 45px;
+    margin-bottom: 12px;
+    font-size: 0.8rem;
+    opacity: 1;
+    animation: none !important;
+  }
+
+  .vm-content ol li::before {
+    width: 25px;
+    height: 25px;
+    font-size: 0.7rem;
+    left: 8px;
+  }
+
+  /* Logo section - VERTICAL LAYOUT */
+  .section-logo-meaning {
+    padding: 40px 15px;
+  }
+
+  .section-logo-meaning h2 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+  }
+
+  .section-logo-meaning h2::after {
+    width: 120px;
+  }
+
+  .logo-cards-container {
+    flex-direction: column;
+    gap: 12px;
+    max-width: 280px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .logo-card {
+    flex: 0 1 100%;
+    max-width: 280px;
+  }
+
+  .card-overlay p {
+    font-size: 0.75rem;
+    padding: 12px;
+  }
+
+  .card-title {
+    font-size: 0.8rem;
+    padding: 12px 8px 8px;
+  }
+
+  /* Values section responsive */
+  .section-values {
+    padding: 50px 15px;
+  }
+
+  .section-values h2 {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+  }
+
+  .section-values h2::after {
+    width: 150px;
+  }
+
+  .values-container {
+    gap: 15px;
+  }
+
+  .value-card {
+    flex: 0 1 100%;
+    padding: 18px 12px;
+  }
+
+  .value-icon {
+    font-size: 2rem;
+  }
+
+  .value-card h3 {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+
+  .value-card p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 1024px) {
+  .logo-card {
+    flex: 0 1 calc(33.333% - 27px);
+  }
+}
