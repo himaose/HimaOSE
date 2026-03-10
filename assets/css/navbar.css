@@ -12,6 +12,8 @@ nav {
     background-color 0.3s ease,
     box-shadow 0.3s ease,
     color 0.3s ease;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .navbar .logo {
   display: flex;

@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="./assets/css/seniora.css" />
     <link rel="stylesheet" href="./assets/css/mi.css" />
     <link rel="stylesheet" href="./assets/css/ilbang.css" />
+    <link rel="stylesheet" href="./assets/css/ketua.css" />
 
     <!-- Feather -->
     <script src="https://unpkg.com/feather-icons"></script>
@@ -177,7 +178,7 @@
     <script>
       $(document).ready(function () {
         // navoigo
-        const router = new Navigo("/HimaOSEWP", { hash: true });
+        const router = new Navigo("/", { hash: true });
 
         function renderPage(path, menuId, callback = null) {
           $("#content").load(path, function () {
@@ -214,8 +215,18 @@
           .on("/bidang", function () {
             renderPage("./components/pages/bidang.html", "bidang");
           })
+          .on("/bidang/:nama", function (match) {
+            const namaBidang = match.data.nama; 
+            renderPage(
+              `./components/pages/organogram/${namaBidang}.html`,
+              "bidang",
+            );
+          })
           .on("/kontak", function () {
             renderPage("./components/pages/kontak.html", "kontak");
+          })
+          .notFound(() => {
+            router.navigate("/");
           });
 
         $(document).on("click", ".btn-selengkapnya", function (e) {
@@ -228,73 +239,24 @@
           router.navigate("/profil");
         });
 
-        $(document).on("click", "#sekretaris", function (e) {
-          e.preventDefault();
-          renderPage("./components/pages/organogram/sekretaris.html");
-          router.navigate("/bidang/sekretaris");
+        $(document).on(
+          "click",
+          "#bendahara, #sekretaris, #dagri, #psdm, #dimas, #humas, #ekotif, #kesma, #seniora, #mi, #ilbang, #ketua",
+          function (e) {
+            e.preventDefault();
+            const idBidang = $(this).attr("id");
+
+            router.navigate(`/bidang/${idBidang}`);
+          },
+        );
+
+        if (!window.location.hash || window.location.hash === "") {
+          router.navigate("/");
+        }
+
+        router.notFound(() => {
+          router.navigate("/");
         });
-
-        $(document).on("click", "#bendahara", function (e) {
-          e.preventDefault();
-          renderPage("./components/pages/organogram/bendahara.html");
-          router.navigate("/bidang/bendahara");
-        });
-
-        $(document).on("click", "#dagri", function (e) {
-          e.preventDefault();
-          renderPage("./components/pages/organogram/dagri.html");
-          router.navigate("/bidang/dagri");
-        });
-
-        $(document).on("click", "#psdm", function (e) {
-          e.preventDefault();
-          renderPage("./components/pages/organogram/psdm.html");
-          router.navigate("/bidang/psdm");
-        });
-
-        $(document).on("click", "#dimas", function (e) {
-          e.preventDefault();
-          renderPage("./components/pages/organogram/dimas.html");
-          router.navigate("/bidang/dimas");
-        });
-
-        $(document).on("click", "#humas", function (e) {
-          e.preventDefault();
-          renderPage("./components/pages/organogram/humas.html");
-          router.navigate("/bidang/humas");
-        });
-
-        $(document).on("click", "#ekotif", function (e) {
-          e.preventDefault();
-          renderPage("./components/pages/organogram/ekotif.html");
-          router.navigate("/bidang/ekotif");
-        });
-
-        $(document).on("click", "#kesma", function (e) {
-          e.preventDefault();
-          renderPage("./components/pages/organogram/kesma.html");
-          router.navigate("/bidang/kesma");
-        });
-
-        $(document).on("click", "#seniora", function (e) {
-          e.preventDefault();
-          renderPage("./components/pages/organogram/seniora.html");
-          router.navigate("/bidang/seniora");
-        });
-
-        $(document).on("click", "#mi", function (e) {
-          e.preventDefault();
-          renderPage("./components/pages/organogram/mi.html");
-          router.navigate("/bidang/mi");
-        });
-
-        $(document).on("click", "#ilbang", function (e) {
-          e.preventDefault();
-          renderPage("./components/pages/organogram/ilbang.html");
-          router.navigate("/bidang/ilbang");
-        });
-
-
 
         // Jalankan Router
         router.resolve();

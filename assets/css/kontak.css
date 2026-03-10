@@ -117,6 +117,13 @@ iframe {
 
 /* Responsive Breakpoint */
 @media (max-width: 768px) {
+  .kontak .container {
+    grid-template-columns: 1fr; /* Memaksa satu kolom penuh */
+    padding: 15px; /* Kurangi padding agar tidak terlalu sesak */
+    width: 100%;
+    overflow-x: hidden; /* Mencegah elemen di dalamnya meluber */
+  }
+
   .container {
     grid-template-columns: 1fr;
     margin-top: 20px;
