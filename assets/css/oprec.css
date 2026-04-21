@@ -16,21 +16,94 @@ body {
   padding: 0;
 }
 
-/* ================= HEADER HALAMAN ================= */
-/* FIX: selector spesifik ke elemen halaman, bukan card */
-.oprec > .oprec-header {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("../images/abstract-coloured-background-with-variety-transparent-raindrops.jpeg")
-    center / cover no-repeat;
-  color: var(--color-white);
-  text-align: center;
-  padding: 100px 20px;
+/* ================= TABS ================= */
+.oprec-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem auto 3rem;
+  flex-wrap: wrap;
 }
 
-.oprec > .oprec-header h1 {
+.tab-button {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-blue-light);
+  color: var(--color-blue-dark);
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 180px;
+}
+
+.tab-button:hover {
+  background-color: var(--color-blue-light);
+  color: var(--color-white);
+}
+
+.tab-button.active {
+  background-color: var(--color-blue-dark);
+  color: var(--color-white);
+  border-color: var(--color-blue-dark);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-title {
+  text-align: center;
+  color: var(--color-blue-dark);
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+/* ================= HEADER HALAMAN ================= */
+
+.oprec .oprec-header {
+  background-color: var(--color-black);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../images/abstract-coloured-background-with-variety-transparent-raindrops.jpeg");
+
+  background-size: cover;
+  background-position: center;
+
+  color: var(--color-white);
+  text-align: center;
+
+  padding: 0 10px; /* padding atas bawah dipindah ke flex */
+  opacity: 0.9;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* 🔥 INI YANG BIKIN SAMA */
+  min-height: 350px;
+}
+
+/* Judul */
+.oprec .oprec-header h1 {
   font-size: 2.5rem;
-  margin-bottom: 15px;
+  margin: 0 0 15px 0;
   color: var(--color-yellow-light);
+}
+
+/* Paragraf */
+.oprec .oprec-header p {
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.6;
+  max-width: 600px;
 }
 
 /* ================= CONTAINER ================= */
@@ -40,7 +113,7 @@ body {
   justify-content: center;
   gap: 2.5rem;
   width: 80%;
-  margin: 3rem auto;
+  margin: 0 auto 3rem auto;
 }
 
 /* ================= CARD ================= */
@@ -64,25 +137,26 @@ body {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
-/* ================= BADGE DIVISI ================= */
-/* FIX: ganti dari .oprec-header (konflik) ke .deadline-box sesuai HTML */
-.deadline-box {
+/* ================= BADGE DIVISI & STATUS ================= */
+.oprec-badge-header {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 4px;
+  margin-bottom: 12px;
+  justify-content: flex-start;
 }
 
-.deadline-box span,
 .oprec-divisi,
 .oprec-status {
   display: inline-block;
   background-color: var(--color-yellow-light);
   color: #333;
-  padding: 4px 12px;
-  border-radius: 30px;
-  font-size: 0.78rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
   font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* ================= JUDUL ================= */
@@ -139,13 +213,34 @@ body {
 .not-found {
   display: flex;
   flex-direction: column;
-  background: #f3f3f3;
-  border: 1px solid #f0f0f0;
+  background: linear-gradient(135deg, #e8f4f8 0%, #f0ebf8 100%);
+  border: 2px solid #d4e9f7;
   border-radius: 30px;
-  padding: 2rem;
+  padding: 3rem 2rem;
   align-items: center;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(81, 130, 205, 0.12);
+}
+
+.not-found i {
+  color: #5182cd;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+.not-found p {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.not-found span {
+  font-size: 0.95rem;
+  color: #7f8c8d;
+  font-style: italic;
+  margin: 0;
 }
 
 /* ================= TABLET ================= */
@@ -165,7 +260,7 @@ body {
   .container-oprec {
     width: 95%;
     gap: 1.5rem;
-    margin: 2rem auto;
+    margin: 0 auto 2rem auto;
   }
 
   .box-oprec {
@@ -173,17 +268,56 @@ body {
     padding: 1.5rem;
   }
 
-  .oprec > .oprec-header h1 {
+  .oprec .oprec-header {
+    padding: 65px 10px; /* sedikit lebih stabil */
+  }
+
+  .oprec .oprec-header h1 {
     font-size: 2rem;
   }
 
+  .oprec .oprec-header p {
+    font-size: 0.95rem;
+  }
+
+
   .box-oprec h2.title-box {
     font-size: 1.2rem;
+  }
+
+  /* Tab responsive */
+  .oprec-tabs {
+    gap: 0.5rem;
+    margin: 1.5rem auto 2rem;
+  }
+
+  .tab-button {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    min-width: 140px;
+  }
+
+  .tab-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 }
 
 /* ================= SMALL MOBILE ================= */
 @media (max-width: 480px) {
+  .oprec .oprec-header {
+    padding: 60px 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  .oprec .oprec-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .oprec .oprec-header p {
+    font-size: 0.9rem;
+  }
+
   .box-oprec {
     padding: 1.25rem;
   }
@@ -195,6 +329,24 @@ body {
   .box-oprec .box-link {
     font-size: 0.85rem;
     padding: 7px 14px;
+  }
+
+  /* Tab responsive */
+  .oprec-tabs {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .tab-button {
+    width: 100%;
+    max-width: 280px;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+
+  .tab-title {
+    font-size: 1.3rem;
   }
 }
 
