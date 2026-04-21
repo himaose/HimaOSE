@@ -216,6 +216,32 @@
         return (persyaratan || '').split(",").map((item) => item.trim()).filter(item => item.length > 0);
       }
 
+      // Helper function untuk render kartu oprec
+      function renderOprecCard(item) {
+        return `<div class="box-oprec">
+          <!-- Divisi & Status -->
+          <div class="oprec-badge-header">
+            <span class="oprec-divisi">Divisi: ${item.divisi}</span>
+            <span class="oprec-status">Status: ${item.status || 'Belum diumumkan'}</span>
+          </div>
+
+          <!-- Nama Program Kerja -->
+          <h2 class="title-box">${item.nama_proker}</h2>
+
+          <!-- Deskripsi -->
+          <p class="description-box">
+            ${item.deskripsi || 'Deskripsi belum tersedia.'}
+          </p>
+
+          <!-- Link Selengkapnya -->
+          <div class="oprec-link">
+            <a href="${item.link}" class="box-link" target="_blank">
+              Informasi Lebih Lanjut →
+            </a>
+          </div>
+        </div>`;
+      }
+
 
 
       // ── Tampilan "tidak ada data" & "error" ─────────────────────────────────
@@ -424,35 +450,66 @@
                 if (prokerError) throw prokerError;
 
                 if (container && prokerData && prokerData.length > 0) {
-                  container.innerHTML = prokerData
-                    .map(
-                      (item) => `<div class="box-oprec">
+                  // Kelompokkan data berdasarkan status
+                  const groupedData = {
+                    "Open Recruitment": prokerData.filter(item => item.status === "Open Recruitment"),
+                    "On Going": prokerData.filter(item => item.status === "On Going"),
+                    "Terlaksana": prokerData.filter(item => item.status === "Terlaksana")
+                  };
 
-                        <!-- Divisi & Status -->
-                        <div class="oprec-header">
-                          <span class="oprec-divisi">Divisi: ${item.divisi}</span>
-                          <span class="oprec-status">Status: ${item.status || 'Belum diumumkan'}</span>
-                        </div>
+                  // Buat struktur tab
+                  let htmlContent = `
+                    <div class="oprec-tabs">
+                      <button class="tab-button active" data-tab="open-recruitment">Open Recruitment</button>
+                      <button class="tab-button" data-tab="on-going">On Going</button>
+                      <button class="tab-button" data-tab="terlaksana">Terlaksana</button>
+                    </div>
 
-                        <!-- Nama Program Kerja -->
-                        <h2 class="title-box">${item.nama_proker}</h2>
+                    <div class="tab-content active" id="open-recruitment">
+                      <div class="container-oprec">
+                        ${groupedData["Open Recruitment"].length > 0 ?
+                      groupedData["Open Recruitment"].map(item => renderOprecCard(item)).join("") :
+                      htmlKosong("Tidak ada program kerja yang sedang open recruitment.", "Pantau terus sosial media kami untuk info terbaru.")
+                    }
+                      </div>
+                    </div>
 
-                        <!-- Deskripsi -->
-                        <p class="description-box">
-                          ${item.deskripsi || 'Deskripsi belum tersedia.'}
-                        </p>
-                        
+                    <div class="tab-content" id="on-going">
+                      <div class="container-oprec">
+                        ${groupedData["On Going"].length > 0 ?
+                      groupedData["On Going"].map(item => renderOprecCard(item)).join("") :
+                      htmlKosong("Tidak ada program kerja yang sedang berlangsung.", "Pantau terus sosial media kami untuk info terbaru.")
+                    }
+                      </div>
+                    </div>
 
-                        <!-- Link Selengkapnya -->
-                        <div class="oprec-link">
-                          <a href="${item.link}" class="box-link" target="_blank">
-                            Informasi Lebih Lanjut → 
-                          </a>
-                        </div>
+                    <div class="tab-content" id="terlaksana">
+                      <div class="container-oprec">
+                        ${groupedData["Terlaksana"].length > 0 ?
+                      groupedData["Terlaksana"].map(item => renderOprecCard(item)).join("") :
+                      htmlKosong("Belum ada program kerja yang terlaksana.", "Pantau terus sosial media kami untuk info terbaru.")
+                    }
+                      </div>
+                    </div>
+                  `;
 
-                      </div>`
-                    )
-                    .join("");
+                  container.innerHTML = htmlContent;
+
+                  // Event listener untuk tab switching
+                  document.querySelectorAll('.tab-button').forEach(button => {
+                    button.addEventListener('click', function () {
+                      const tabId = this.getAttribute('data-tab');
+
+                      // Remove active class from all tabs and content
+                      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+                      // Add active class to clicked tab and corresponding content
+                      this.classList.add('active');
+                      document.getElementById(tabId).classList.add('active');
+                    });
+                  });
+
                   if (window.feather) feather.replace();
                 } else {
                   console.warn("[DEBUG] Oprec: data kosong atau null");

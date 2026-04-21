@@ -23,6 +23,7 @@
   background-size: cover;
   background-position: center;
   color: var(--color-white);
+  opacity: 0.9;
   text-align: center;
   padding: 100px 10px;
 }
@@ -194,11 +195,34 @@
 .not-found {
   display: flex;
   flex-direction: column;
-  background: #f3f3f3;
+  background: linear-gradient(135deg, #e8f4f8 0%, #f0ebf8 100%);
+  border: 2px solid #d4e9f7;
   border-radius: 20px;
   align-items: center;
-  padding: 2rem;
+  padding: 3rem 2rem;
   text-align: center;
+  box-shadow: 0 4px 15px rgba(81, 130, 205, 0.08);
+}
+
+.not-found i {
+  color: #5182cd;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+.not-found p {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.not-found span {
+  font-size: 0.95rem;
+  color: #7f8c8d;
+  font-style: italic;
+  margin: 0;
 }
 
 /* ================= IMAGE CARD ================= */

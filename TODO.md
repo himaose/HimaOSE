@@ -1,8 +1,10 @@
-# TODO: Fix index.html Lomba section
+# Task: Fix oprec.css header background size for mobile to match other pages
 
-- [x] Step 1: Add missing renderSyarat function to index.html
-- [x] Step 2: Update Lomba HTML template with img-card-wrapper
-- [x] Step 3: Ensure consistent feather.replace() calls in Lomba handler
-- [x] Step 4: Test navigation to #/beasiswa-lomba and check rendering
+## Steps:
 
-**Task completed: index.html Lomba section fixed.**
+- [x] Create TODO.md with plan breakdown
+- [ ] Step 1: Edit assets/css/oprec.css mobile media queries to standardize padding (80px 10px @768px, 60px 10px @480px), confirm background-size: cover.
+- [ ] Step 2: Test changes (suggest user preview components/pages/oprec.html).
+- [ ] Step 3: Attempt completion.
+
+Progress: Planning complete, ready for edits.
